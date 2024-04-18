@@ -1,34 +1,45 @@
 body {
-    background-color: #000000;
-    color: #ffffff;
+	background-color:rgba(0, 0, 0, 0.9);;
+	color: #ffffff;
+}
+.movie-app > .row {
+	overflow-x: auto;
+	flex-wrap: nowrap;
 }
 
-.movie-app > .row {
-    overflow-x: auto;
-    flex-wrap: nowrap;
+.row>* {
+    flex-shrink: 0;
+    width: auto;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x)* .5);
+    padding-left: calc(var(--bs-gutter-x)* .5);
+    margin-top: var(--bs-gutter-y);
 }
 
 .image-container {
     position: relative;
+    display: inline-block;
+    margin: 20px;
     transition: transform 0.2s;
 }
 
 .image-container:hover {
-    cursor: hover;
-    transform: scale(1.1);
+	cursor: pointer;
+	transform: scale(1.1);
 }
 
 .image-container:hover .overlay {
-    opacity: 1;
+	opacity: 1;
 }
 
 .overlay {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.8);
-    width: 100%;
-    transition: 0.5s ease;
-    opacity: 0;
-    font-size: 20px;
-    padding: 20px;
-    text-align: center;
+	position: absolute;
+	background: rgba(0, 0, 0, 0.6);
+	width: 100%;
+	transition: 0.5s ease;
+	opacity: 0;
+	bottom: 0;
+	font-size: 20px;
+	padding: 20px;
+	text-align: center;
 }
