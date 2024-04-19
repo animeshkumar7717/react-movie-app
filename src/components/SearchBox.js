@@ -1,16 +1,21 @@
 import React from 'react';
+import { BsSearch } from 'react-icons/bs';
 
-const SearchBox = (props) => {
-	return (
-		<div className='col col-sm-4'>
-			<input
-				className='form-control'
-				value={props.value}
-				onChange={(event) => props.setSearchValue(event.target.value)}
-				placeholder='Type to search...'
-			></input>
-		</div>
-	);
+const SearchBox = ({ searchValue, setSearchValue }) => {
+  return (
+    <div className="input-group search-input-container">
+      <span className="input-group-text search-icon">
+        <BsSearch />
+      </span>
+      <input
+        type="text"
+        className="form-control search-input"
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
+        placeholder="Search..."
+      />
+    </div>
+  );
 };
 
 export default SearchBox;
