@@ -1,34 +1,136 @@
 body {
-    background-color: #000000;
-    color: #ffffff;
+	background-color: rgba(0, 0, 0, 0.9);
+	color: #ffffff;
 }
 
+.container-fluid.movie-app {
+	padding: 20px;
+	margin: 40px;
+  }
+  
+  .top-section {
+	border: 2px solid red;
+	padding: 20px;
+	margin-bottom: 20px;
+  }
+  
+  .bottom-section {
+	display: flex;
+	flex-direction: row;
+  }
+  
+  .left-section {
+	margin-right: 10px;
+	border-right: 1px solid #ccc;
+  }
+
+  /* .left-section ::-webkit-scrollbar {
+	width: 10px;
+  } */
+  
+  .right-section {
+	margin-left: 10px;
+	width: 100%;
+  }
+  
+
 .movie-app > .row {
-    overflow-x: auto;
-    flex-wrap: nowrap;
+	overflow-x: auto;
+	flex-wrap: nowrap;
+}
+
+.search-container {
+	display: flex;
+	align-items: center;
+}
+
+.search-container {
+	display: flex;
+	justify-content: space-between;
+  }
+  
+.form-control {
+	flex: 1;
+	margin-right: 10px;
+}
+
+.search-button {
+	color: white;
+	background: crimson;
+	border: none;
+	padding: 6px 12px;
+	cursor: pointer;
+}
+
+.search-button:hover {
+	background: darkred;
+}
+
+
+.search-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-box {
+    flex: 1;
+}
+
+.button {
+    margin-left: 20px; /* Adjust the margin as needed */
+}
+
+
+.row>* {
+    flex-shrink: 0;
+    width: auto;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x)* .5);
+    padding-left: calc(var(--bs-gutter-x)* .5);
+    margin-top: var(--bs-gutter-y);
 }
 
 .image-container {
     position: relative;
+    display: inline-block;
+    margin: 20px;
     transition: transform 0.2s;
 }
 
 .image-container:hover {
-    cursor: hover;
-    transform: scale(1.1);
+	cursor: pointer;
+	transform: scale(1.1);
 }
 
 .image-container:hover .overlay {
-    opacity: 1;
+	opacity: 1;
 }
 
 .overlay {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.8);
-    width: 100%;
-    transition: 0.5s ease;
-    opacity: 0;
-    font-size: 20px;
-    padding: 20px;
-    text-align: center;
+	position: absolute;
+	background: rgba(0, 0, 0, 0.6);
+	width: 100%;
+	transition: 0.5s ease;
+	opacity: 0;
+	bottom: 0;
+	font-size: 20px;
+	padding: 20px;
+	text-align: center;
 }
+
+
+/* .column-layout .images {
+	width: 200px;
+	height: 300px;
+  } */
+  
+.column-layout .movie-list {
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .column-layout .image-container {
+	margin: 20px auto;
+  }
+  
