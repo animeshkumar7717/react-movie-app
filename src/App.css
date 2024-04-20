@@ -1,6 +1,10 @@
-body {
+/* body {
 	background-color: rgba(0, 0, 0, 0.9);
-	color: #ffffff;
+	color: #ffffff; 
+} */
+
+.pages {
+	display: flex;
 }
 
 .container-fluid.movie-app {
@@ -10,7 +14,9 @@ body {
   
   .top-section {
 	border: 2px solid red;
-	padding: 20px;
+	padding: 70px;
+	font-size: larger;
+	font-weight: 500;
 	margin-bottom: 20px;
   }
   
@@ -24,9 +30,9 @@ body {
 	border-right: 1px solid #ccc;
   }
 
-  /* .left-section ::-webkit-scrollbar {
+  .left-section ::-webkit-scrollbar {
 	width: 10px;
-  } */
+  }
   
   .right-section {
 	margin-left: 10px;
@@ -78,7 +84,7 @@ body {
 }
 
 .button {
-    margin-left: 20px; /* Adjust the margin as needed */
+    margin-left: 20px;
 }
 
 
@@ -103,11 +109,11 @@ body {
 	transform: scale(1.1);
 }
 
-.image-container:hover .overlay {
+/* .image-container:hover .overlay {
 	opacity: 1;
-}
+} */
 
-.overlay {
+/* .overlay {
 	position: absolute;
 	background: rgba(0, 0, 0, 0.6);
 	width: 100%;
@@ -117,20 +123,26 @@ body {
 	font-size: 20px;
 	padding: 20px;
 	text-align: center;
-}
+} */
 
 
-/* .column-layout .images {
+.column-layout .images {
 	width: 200px;
 	height: 300px;
-  } */
+  }
   
 .column-layout .movie-list {
 	display: flex;
 	flex-direction: column;
   }
+
+  .movie-list-container {
+	display: flex;
+	/* flex-wrap: nowrap; */
+	overflow-x: auto;
+	max-height: calc(100vh - 60px);
+  }
   
   .column-layout .image-container {
 	margin: 20px auto;
   }
-  
