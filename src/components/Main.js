@@ -83,7 +83,7 @@ const Main = () => {
             <div className='row d-flex align-items-center justify-content-center mt-4 mb-4'>
               <MovieListHeading heading='Favourites' />
             </div>
-            <SearchBox searchValue={fevouriteSearchValue} setSearchValue={setFevouriteSearchValue} />
+            <SearchBox searchValue={fevouriteSearchValue} setSearchValue={setFevouriteSearchValue} searchIcon='true' />
             <div className='home-button' style={{ margin: '20px', width: '100%', background: 'crimson', borderRadius: '5px', padding: '5px' }}>
               <Button name='Home' onClick={onClickFavouriteHandler} />
             </div>
@@ -126,7 +126,7 @@ const Main = () => {
             </div>
           </div>
           <div className='search-container'>
-            <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+            <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} searchIcon='true' />
             <Button name='Search' onClick={onclickHandler} />
           </div>
           {error ? ( 
