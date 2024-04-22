@@ -1,15 +1,14 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Main from '../Main'
-import { SignIn, SignOut, SignUp } from '../Form'
+import { SignIn, SignUp } from '../Form'
+import ConditionalRendering from '../ConditionalRendering'
 
 const Pages = () => {
   return (
     <Routes>
-      <Route path='/' element={<Main />} />
+      <Route path='/' element={<ConditionalRendering />} />
       <Route path='/sign-in' element={<SignIn />} />
       <Route path='/sign-up' element={<SignUp />} />
-      <Route path='/sign-out' element={<SignOut />} />
     </Routes>
   )
 }

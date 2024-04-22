@@ -3,7 +3,7 @@
 	color: #ffffff; 
 } */
 
-.pages {
+.pages .main {
 	display: flex;
 }
 
@@ -147,4 +147,8 @@
   
   .column-layout .image-container {
 	margin: 20px auto;
+  }
+
+  .img {
+	width: 80%;
   }
