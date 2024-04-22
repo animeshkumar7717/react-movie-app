@@ -8,14 +8,24 @@ import AddFavourites from './AddFavourites';
 import RemoveFavourites from './RemoveFavourites';
 import Button from './Button';
 
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from '../store/UserSelector.js';
+
 const Main = () => {
+  const currentUser = useSelector(selectCurrentUser);
+  console.log('currentUser', currentUser);
+  const currentUserEmail = currentUser.email
+  console.log('currentUserEmail', currentUserEmail); 
   const [movie, setMovie] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [fevouriteSearchValue, setFevouriteSearchValue] = useState('');
   const [searchClick, setSearchClick] = useState('');
-  const [favourites, setFavourites] = useState(
-    JSON.parse(localStorage.getItem("favourite-movie")) || []
-  );
+  const storedFavourites = JSON.parse(localStorage.getItem("favourite-movie")) || {};
+  console.log('storedFavourites', storedFavourites);
+  const currentUserFavourite =  storedFavourites[currentUserEmail] || storedFavourites[currentUser];
+  console.log('currentUserFavourite', currentUserFavourite);
+  const [favourites, setFavourites] = useState(Array.isArray(currentUserFavourite) ? currentUserFavourite : []);
+
   const [error, setError] = useState(null);
 
   const apiKey = 'cb859b70';
@@ -31,8 +41,9 @@ const Main = () => {
   
       if(responseJSON.Search) {
         setMovie(responseJSON.Search)
+      } else {
+        setError('Movies not found!');
       }
-      setError(null);
     } catch (error) {
       console.error('Error fetching data:', error);
       setError('Failed to fetch data. Please check your internet connection.');
@@ -40,27 +51,38 @@ const Main = () => {
   }
 
   useEffect(()=>{
-    getMovieRequest(searchClick)
+    if(searchClick) {
+      setError(null)
+      getMovieRequest(searchClick);
+    }
   }, [searchClick]);
 
-  const saveToLocalStorage = (items) => {
-    localStorage.setItem("favourite-movie", JSON.stringify(items))
+  const saveToLocalStorage = (items, currentUser) => {
+    try {
+      const localStorageData = JSON.parse(localStorage.getItem("favourite-movie")) || {};
+      localStorageData[`${currentUser.email}`] = items;
+      console.log('localStorageData', localStorageData);
+      localStorage.setItem("favourite-movie", JSON.stringify(localStorageData));
+    } catch (error) {
+      console.error('Error saving favorites to localStorage:', error);
+    }
   }
+    
 
   const AddFavouriteMovie = (movie) => {
     const isAlreadyFavourite = favourites.some(fav => fav.imdbID === movie.imdbID);
-    if(!isAlreadyFavourite) {
+    if (!isAlreadyFavourite) {
       const newFavouriteList = [...favourites, movie];
-      setFavourites(newFavouriteList)
-      saveToLocalStorage(newFavouriteList)
+      setFavourites(newFavouriteList);
+      saveToLocalStorage(newFavouriteList, currentUser);
     }
   }
-
+  
   const removeFavouriteMovie = (movie) => {
-    const newFavouriteList = favourites.filter((fav)=> fav.imdbID !== movie.imdbID )
-    setFavourites(newFavouriteList)
-    saveToLocalStorage(newFavouriteList)
-  }
+    const newFavouriteList = favourites.filter((fav)=> fav.imdbID !== movie.imdbID );
+    setFavourites(newFavouriteList);
+    saveToLocalStorage(newFavouriteList, currentUser);
+  }  
 
   const onclickHandler = () => {
     setSearchClick(searchValue)

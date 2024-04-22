@@ -5,7 +5,7 @@ export const USER_ACTION_TYPE = {
 }
 
 const INITIAL_STATE = {
-    currentUser: null,
+    currentUser: JSON.parse(localStorage.getItem('current')) || null,
 }
 
 export const userReducer = (state=INITIAL_STATE,action) => {
@@ -13,10 +13,8 @@ export const userReducer = (state=INITIAL_STATE,action) => {
     switch(type) {
         case USER_ACTION_TYPE.SET_CURRENT_SIGNIN_USER:
             return {...state, currentUser: payload}
-        case USER_ACTION_TYPE.SET_CURRENT_SIGNUP_USER:
-            return {...state, currentUser: payload}
-        case USER_ACTION_TYPE.SET_CURRENT_SIGNOUT_USER:
-            return {...state, currentUser: null}
+        // case USER_ACTION_TYPE.SET_CURRENT_SIGNOUT_USER:
+        //     return {...state, currentUser: null}
         default:
             return state;
     }

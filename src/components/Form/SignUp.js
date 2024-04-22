@@ -1,37 +1,38 @@
 import React, { useState } from 'react';
-
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-
-import { USER_ACTION_TYPE } from '../../store/UserReducer.js';
-import { selectCurrentUser } from '../../store/UserSelector.js';
-
 import Button from '../Button';
 import './Form.css';
 import SearchBox from '../SearchBox';
 import { Navigate } from 'react-router-dom';
 
 const SignUp = () => {
-  const currentUser = useSelector(selectCurrentUser);
-  console.log('currentUser', currentUser);
   const [email, setEmail] = useState('');
-
-  const dispatch = useDispatch();
-
+  const [currentUser, setCurrentUser] = useState(false);
+  const [error, setError] = useState(null);
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    const existingEmails = JSON.parse(localStorage.getItem('userEmails')) || [];
+    let existingEmails = [];
+    try {
+      const storedEmails = localStorage.getItem('userEmails') || [];
+      if (storedEmails) {
+        existingEmails = JSON.parse(storedEmails);
+      }
+    } catch (error) {
+      console.error("Error parsing stored emails from localStorage:", error);
+    }
+    
     const updatedEmails = [...existingEmails, email];
-    localStorage.setItem('userEmails', JSON.stringify(updatedEmails));
 
-    dispatch({
-      type: USER_ACTION_TYPE.SET_CURRENT_SIGNUP_USER,
-      payload: { email },
-    });
-
+    try {
+      localStorage.setItem('userEmails', JSON.stringify(updatedEmails));
+    } catch (error) {
+      console.error("Error storing updated emails in localStorage:", error);
+    }
+    
+    setCurrentUser(true);
     setEmail('');
-  };
+  }; 
 
   return (
     <div className="form-container">
@@ -42,7 +43,7 @@ const SignUp = () => {
         <br />
         <Button name="Submit" />
       </form>
-      {currentUser && <Navigate to='/' />}
+      {currentUser && <Navigate to='/sign-in' />}
     </div>
   );
 };

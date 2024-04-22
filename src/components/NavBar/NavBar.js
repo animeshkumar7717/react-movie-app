@@ -15,8 +15,9 @@ const NavBar = () => {
 
   const handleSignOut = () => {
     dispatch({
-      type: USER_ACTION_TYPE.SET_CURRENT_SIGNOUT_USER
-    })
+      type: USER_ACTION_TYPE.SET_CURRENT_SIGNIN_USER
+    });
+    localStorage.setItem('current', null)
   };
 
   return (

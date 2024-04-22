@@ -32,14 +32,13 @@ const SignIn = () => {
         type: USER_ACTION_TYPE.SET_CURRENT_SIGNIN_USER,
         payload: { email },
       });
+      localStorage.setItem('current', JSON.stringify(email))
       setUserExists(true);
     } else {
       setErrorMessage('User does not exist');
     }
   };
-  
-  console.log('user exists', userExists);
-  
+    
   return (
     <div className="form-container">
       <h2>Sign In</h2>
