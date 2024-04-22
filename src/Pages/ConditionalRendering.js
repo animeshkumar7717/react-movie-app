@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectCurrentUser } from '../store/UserSelector';
+import { selectCurrentUser } from '../store/UserSelector.js';
 
-import Main from './Main';
-import Home from './Home/Home.js'
+import Main from './Main.js';
+import Home from './Home.js'
 
 
 const ConditionalRendering = () => {

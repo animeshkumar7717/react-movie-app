@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Button from '../Button';
-import './Form.css';
-import SearchBox from '../SearchBox';
+import Button from '../components/Button';
+import './Pages.css';
+import SearchBox from '../components/SearchBox';
 import { Navigate } from 'react-router-dom';
 
 const SignUp = () => {
@@ -10,9 +10,11 @@ const SignUp = () => {
   const [error, setError] = useState(null);
   
   const handleSubmit = (e) => {
+    let existingEmails = [];
+    let updatedEmails = [];
+
     e.preventDefault();
     
-    let existingEmails = [];
     try {
       const storedEmails = localStorage.getItem('userEmails') || [];
       if (storedEmails) {
@@ -22,7 +24,14 @@ const SignUp = () => {
       console.error("Error parsing stored emails from localStorage:", error);
     }
     
-    const updatedEmails = [...existingEmails, email];
+    if(!existingEmails.includes(email)) {
+      console.log('false');
+      updatedEmails = [...existingEmails, email];
+    } else {
+      console.log('true');
+      setError('User is already registered!')
+      return;
+    }
 
     try {
       localStorage.setItem('userEmails', JSON.stringify(updatedEmails));
@@ -42,6 +51,7 @@ const SignUp = () => {
         <SearchBox searchValue={email} setSearchValue={setEmail} placeholder="Enter your email address" />
         <br />
         <Button name="Submit" />
+        {error && (<div style={{color: 'red'}}>{error}</div>)}
       </form>
       {currentUser && <Navigate to='/sign-in' />}
     </div>

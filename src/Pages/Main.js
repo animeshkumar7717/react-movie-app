@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
-import MovieList from './MovieList';
-import MovieListHeading from './MovieListHeading';
-import SearchBox from './SearchBox';
-import AddFavourites from './AddFavourites';
-import RemoveFavourites from './RemoveFavourites';
-import Button from './Button';
+import MovieList from '../components/MovieList.js';
+import MovieListHeading from '../components/MovieListHeading.js';
+import SearchBox from '../components/SearchBox.js';
+import AddFavourites from '../components/AddFavourites.js';
+import RemoveFavourites from '../components/RemoveFavourites.js';
+import Button from '../components/Button.js';
 
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from '../store/UserSelector.js';
@@ -125,26 +125,13 @@ const Main = () => {
               <div className='row d-flex align-items-center mb-4'>
                 <MovieListHeading heading="Welcome To" />
               </div>
-              <marquee direction='top'>
-                Browse through a vast collection of movies and add your favorites with just a click of a button! 
+              <p>
+                Browse through a vast collection of movies and add your favorites watchlist with just a click in a poster! 
                 Discover new films, search by title, and effortlessly manage your favorite movies list. 
-                Simply click the Add To Favourites and heart icon &nbsp; 
-                <svg
-                  width='1em'
-                  height='1em'
-                  viewBox='0 0 16 16'
-                  className='bi bi-heart-fill'
-                  fill='red'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z'
-                  />
-                </svg>
-                &nbsp; next to a movie to add it to your favorites, and remove it anytime with ease. 
+                Simply click the poster to add it to your favorites watchlist, and click the poster in your fevourite watchlist
+                to remove it anytime with ease. 
                 Enjoy exploring and curating your personalized list of beloved movies
-              </marquee>
+              </p>
             </div>
           </div>
           <div className='search-container'>

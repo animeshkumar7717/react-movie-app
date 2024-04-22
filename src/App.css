@@ -111,23 +111,6 @@
 	transform: scale(1.1);
 }
 
-/* .image-container:hover .overlay {
-	opacity: 1;
-} */
-
-/* .overlay {
-	position: absolute;
-	background: rgba(0, 0, 0, 0.6);
-	width: 100%;
-	transition: 0.5s ease;
-	opacity: 0;
-	bottom: 0;
-	font-size: 20px;
-	padding: 20px;
-	text-align: center;
-} */
-
-
 .column-layout .images {
 	width: 200px;
 	height: 300px;
@@ -140,7 +123,6 @@
 
   .movie-list-container {
 	display: flex;
-	/* flex-wrap: nowrap; */
 	overflow-x: auto;
 	max-height: calc(100vh - 60px);
   }

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { SignIn, SignUp } from '../Form'
-import ConditionalRendering from '../ConditionalRendering'
+import { SignIn, SignUp } from '../Pages'
+import ConditionalRendering from '../Pages/ConditionalRendering'
 
-const Pages = () => {
+const Router = () => {
   return (
     <Routes>
       <Route path='/' element={<ConditionalRendering />} />
@@ -13,4 +13,4 @@ const Pages = () => {
   )
 }
 
-export default Pages
+export default Router

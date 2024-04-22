@@ -2,8 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { USER_ACTION_TYPE } from '../../store/UserReducer.js';
-import { selectCurrentUser } from '../../store/UserSelector.js';
+import { USER_ACTION_TYPE } from '../store/UserReducer.js';
+import { selectCurrentUser } from '../store/UserSelector.js';
 
 import './NavBar.css';
 
