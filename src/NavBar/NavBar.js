@@ -1,14 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { USER_ACTION_TYPE } from '../store/UserReducer.js';
 import { selectCurrentUser } from '../store/UserSelector.js';
-
 import './NavBar.css';
-
+import ToggleTheme from '../components/ToggleButton.js';
 
 const NavBar = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
@@ -20,12 +19,24 @@ const NavBar = () => {
     localStorage.setItem('current', null)
   };
 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    if (!isDarkMode) {
+      document.body.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+      document.body.style.color = '#ffffff';
+    } else {
+      document.body.style.backgroundColor = '#ffffff';
+      document.body.style.color = '#000000';
+    }
+  };
+
   return (
-    <div className='navBar'>
+    <div className={`navBar ${isDarkMode ? 'dark-theme' : 'light-theme'}`}>
         <NavLink to={'/'} style={{ textDecoration: 'none', color: '#fff'}}>
           <h1>WATCHLISTS</h1>
         </NavLink>
       <ul>
+        <ToggleTheme isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         {currentUser ? (
           <NavLink to={'/'} style={{ textDecoration: 'none', color: '#fff'}}>
             <li onClick={handleSignOut}>Sign-out</li>
@@ -41,4 +52,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default NavBar;

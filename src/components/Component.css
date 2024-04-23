@@ -1,0 +1,42 @@
+.theme-toggle {
+    position: relative;
+    margin: 20px;
+    width: 60px;
+    height: 30px;
+  }
+  
+  .theme-toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  
+  .theme-toggle-label::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+  
+  #theme-toggle-checkbox {
+    display: none;
+  }
+  
+  #theme-toggle-checkbox:checked + .theme-toggle-label {
+    background-color: #333;
+  }
+  
+  #theme-toggle-checkbox:checked + .theme-toggle-label::before {
+    transform: translateX(30px);
+  }
+  
