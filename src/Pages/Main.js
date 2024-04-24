@@ -30,7 +30,7 @@ const Main = () => {
 
   const getMovieRequest = async(searchClick) => {
     try {
-      const url = `http://www.omdbapi.com/?s=${searchClick}&apikey=${apiKey}`
+      const url = `https://www.omdbapi.com/?s=${searchClick}&apikey=${apiKey}`
       const response = await fetch(url);
       if (!response.ok) { 
         throw new Error('Failed to fetch data');
