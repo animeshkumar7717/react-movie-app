@@ -26,8 +26,6 @@ const Main = () => {
 
   const apiKey = 'cb859b70';
 
-  console.log('process.env', process.env);
-
   const getMovieRequest = async(searchClick) => {
     try {
       const url = `https://www.omdbapi.com/?s=${searchClick}&apikey=${apiKey}`
