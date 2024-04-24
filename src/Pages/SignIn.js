@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
 
 import { USER_ACTION_TYPE } from '../store/UserReducer.js';
-import { selectCurrentUser } from '../store/UserSelector.js';
 
 import Button from '../components/Button.js';
 import './Pages.css';
 import SearchBox from '../components/SearchBox.js';
 
 const SignIn = () => {
-  const currentUser = useSelector(selectCurrentUser);
-  console.log('currentUser', currentUser);
 
   const [email, setEmail] = useState('');
   const [userExists, setUserExists] = useState(false);

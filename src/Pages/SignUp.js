@@ -25,10 +25,8 @@ const SignUp = () => {
     }
     
     if(!existingEmails.includes(email)) {
-      console.log('false');
       updatedEmails = [...existingEmails, email];
     } else {
-      console.log('true');
       setError('User is already registered!')
       return;
     }
