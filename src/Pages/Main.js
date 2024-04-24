@@ -13,22 +13,20 @@ import { selectCurrentUser } from '../store/UserSelector.js';
 
 const Main = () => {
   const currentUser = useSelector(selectCurrentUser);
-  console.log('currentUser', currentUser);
   const currentUserEmail = currentUser.email
-  console.log('currentUserEmail', currentUserEmail); 
   const [movie, setMovie] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [fevouriteSearchValue, setFevouriteSearchValue] = useState('');
   const [searchClick, setSearchClick] = useState('');
   const storedFavourites = JSON.parse(localStorage.getItem("favourite-movie")) || {};
-  console.log('storedFavourites', storedFavourites);
   const currentUserFavourite =  storedFavourites[currentUserEmail] || storedFavourites[currentUser];
-  console.log('currentUserFavourite', currentUserFavourite);
   const [favourites, setFavourites] = useState(Array.isArray(currentUserFavourite) ? currentUserFavourite : []);
 
   const [error, setError] = useState(null);
 
   const apiKey = 'cb859b70';
+
+  console.log('process.env', process.env);
 
   const getMovieRequest = async(searchClick) => {
     try {
@@ -61,7 +59,6 @@ const Main = () => {
     try {
       const localStorageData = JSON.parse(localStorage.getItem("favourite-movie")) || {};
       localStorageData[`${currentUser.email}`] = items;
-      console.log('localStorageData', localStorageData);
       localStorage.setItem("favourite-movie", JSON.stringify(localStorageData));
     } catch (error) {
       console.error('Error saving favorites to localStorage:', error);
